@@ -15,12 +15,12 @@ const partners = [
   },
   {
     name: 'Google',
-    logoSrc: '/assets/svgs/another.png',
+    logoSrc: '/assets/svgs/3.png',
     url: 'https://google.com',
   },
   {
     name: 'Google',
-    logoSrc: '/assets/svgs/another.png',
+    logoSrc: '/assets/svgs/4.png',
     url: 'https://google.com',
   },
   // Add more partners as needed
