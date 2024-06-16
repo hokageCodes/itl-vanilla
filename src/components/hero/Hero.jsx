@@ -1,29 +1,157 @@
-import React from 'react';
-import VideoBackground from '../../components/video-bg/VideoBackground';
-import Countdown from '../../components/countdown/MyTime';
+import React, { useState, useEffect } from 'react';
+import VideoBackground from '../video-bg/VideoBackground';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import styled from 'styled-components';
+
+const HeroContainer = styled.div`
+  position: relative;
+  background-color: transparent;
+  color: #EFE1D1;
+  min-height: 100vh; // Ensure full screen height
+`;
+
+const ContentContainer = styled.div`
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start; // Align items to the left
+  justify-content: flex-start; // Align content to the left
+  z-index: 10;
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem; // Increase padding on smaller screens
+    top: 50%; // Center content vertically on mobile
+    transform: translateY(-50%);
+    align-items: center; // Center items vertically on mobile
+    justify-content: center; // Center content horizontally on mobile
+  }
+`;
+
+const TextContainer = styled.div`
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 36rem; // Limit max width for better readability
+  margin: 0 1rem; // Ensure some margin on smaller screens
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; // Align items to the left
+  margin-top: 100px;
+
+  h1 {
+  max-width: 500px;
+    // border: 1px solid red;
+  }
+
+  @media (max-width: 768px) {
+    text-align: center; // Center text on mobile
+    align-items: center; // Center items horizontally on mobile
+  }
+
+  h1, p {
+    margin-bottom: 1rem; // Add space between heading and paragraphs
+  }
+
+  .countdown-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem; // Add space between countdown and paragraphs
+
+    .countdown-item {
+      text-align: center; // Center text within each countdown item
+      margin-right: 1rem; // Add spacing between countdown items
+    }
+  }
+  
+  .countdown-text {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem; // Add space between countdown text and buttons
+    color: #FFF;
+
+    p {
+      margin: 0 0.5rem; // Add spacing between countdown text items
+    }
+  }
+
+  .buttons-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%; // Buttons take full width of the container
+    align-items: flex-start; // Align buttons to the left
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    a {
+      margin: 0.5rem 0; // Adds margin around buttons for separation
+      @media (min-width: 768px) {
+        margin: 0 0.5rem; // Adjusts margin for horizontal layout
+      }
+    }
+  }
+`;
 
 const Hero = () => {
+  const [timer, setTimer] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const eventDate = new Date('June 19, 2025 00:00:00').getTime();
+      const currentTime = new Date().getTime();
+      const timeLeft = eventDate - currentTime;
+
+      setTimer({
+        days: Math.floor(timeLeft / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((timeLeft % (1000 * 60)) / 1000),
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="relative bg-transparent text-[#EFE1D1] min-h-screen hero-section">
-      <VideoBackground src="/assets/hero-video.mp4" />
-      <div className="absolute top-10 left-0 w-full p-4 flex items-start justify-center z-10 md:top-1/2 md:transform md:-translate-y-1/2 md:p-16 md:items-center hero-container">
-        <div className="bg-black bg-opacity-60 p-8 mt-16 rounded-md shadow-lg max-w-xl m-4 flex flex-col items-center text-center md:max-w-2xl">
-          <h1 className="hero-deco text-2xl font-black md:text-5xl">THE ITL CONFERENCE '25</h1>
-          <p className="text-lg font-bold mt-2 md:text-2xl">Crossing Borders, Breaking Barriers.</p>
-          <p className="text-lg font-semibold mt-1 mb-4 md:text-2xl">April 3-5, 2025 - Calgary, Alberta</p>
-          
-          {/* Countdown Component */}
-          <div className="flex justify-center mb-4 w-full">
-            <Countdown targetDate="2025-06-19T00:00:00" />
+    <HeroContainer>
+      <VideoBackground src="../../assets/hero-video.mp4" />
+      <ContentContainer>
+        <TextContainer>
+          <h1 className='hero-deco text-5xl font-black'>THE ITL CONFERENCE &#39;25</h1>
+          <p className='text-2xl font-bold'>Crossing Borders, Breaking Barriers.</p>
+          <p className='text-lg'>April 3-5, 2025 - Calgary, Alberta</p>
+          <div className="countdown-container">
+            {Object.entries(timer).map(([unit, value]) => (
+              <div key={unit} className="countdown-item">
+                <CircularProgressbar
+                  value={value}
+                  maxValue={unit === 'days' ? 365 : 60}
+                  text={`${value}`}
+                  styles={buildStyles({
+                    pathColor: `rgba(62, 152, 199, ${value / 100})`,
+                    textColor: '#fff',
+                    trailColor: '#d6d6d6',
+                    backgroundColor: '#3e98c7',
+                  })}
+                />
+                <p>{unit}</p>
+              </div>
+            ))}
           </div>
 
-          <div className="flex flex-col w-full items-center md:flex-row md:justify-center">
-            <a href="/pre-register" className="bg-[#FEFBF6] hover:bg-ctaBg hover:text-bg text-textPrimary font-bold py-3 px-6 rounded-lg transition-colors duration-300 mb-2 md:mb-0 md:mr-2">Pre-Register Now</a>
+          <div className="buttons-container">
+            <a href="/pre-register" className="bg-[#FEFBF6] hover:bg-ctaBg hover:text-bg text-textPrimary font-bold py-3 px-6 rounded-lg transition-colors duration-300">Pre-Register Now</a>
             <a href="/sponsor" className="border border-[#A78295] hover:bg-ctaBg hover:text-bg text-bg font-bold py-3 px-6 rounded-lg transition-colors duration-300">Become a Sponsor</a>
           </div>
-        </div>
-      </div>
-    </div>
+        </TextContainer>
+      </ContentContainer>
+    </HeroContainer>
   );
 };
 

@@ -14,14 +14,18 @@ const AboutSection = () => {
       viewport={{ once: true }}
       variants={slideInVariants}
     >
-      <div className="relative bg-[#FEFBF6] py-8" id="about-us">
+      <div className="relative bg-white py-8" id="about-us">
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12">
+            
             {/* Text Content */}
             <div className="w-full lg:w-1/2 text-textPrimary space-y-6">
-              <h2 className="text-4xl lg:text-5xl font-bold my-2">Welcome to The ITL Conference '25</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl font-black my-2">
+              Welcome to The ITL Conference &#39;25
+            </h2>
+
               <p className="text-md text-textDark lg:text-lg">
-                The ITL Conference is the largest gathering of Internationally Trained Lawyers (ITLs) in Canada. The Conference will feature different legal professionals, regulators, change makers, and other stakeholders committed to supporting ITLs in their legal practice journey in Canada. The ITL Conference is a joint effort of our partner organizations: The ITL Network and Global Lawyers of Canada.
+                The ITL Conference is the largest gathering of Internationally Trained Lawyers (ITLs) in Canada. The Conference will feature different legal professionals, regulators, change makers, and other stakeholders committed to supporting ITLs in their legal practice journey in Canada. The ITL Conference is a joint effort of our partner organisations: The ITL Network, Global Lawyers of Canada, Joy ITL Initiative and ITL NCA NetworkS.
               </p>
               <div>
                 <button className="bg-ctaBg text-white hover:bg-ctaHover rounded-md px-6 py-3 transition duration-300 ease-in-out">
@@ -38,11 +42,11 @@ const AboutSection = () => {
                   alt="About the Conference"
                   width={600}
                   height={600}
-                  className="rounded-lg shadow-2xl"
-                  style={{ objectFit: 'cover' }}
+                  className="rounded-lg shadow-2xl object-cover"
                 />
               </div>
             </div>
+            
           </div>
         </div>
       </div>
