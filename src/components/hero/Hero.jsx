@@ -104,7 +104,7 @@ const Hero = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const eventDate = new Date('June 19, 2025 00:00:00').getTime();
+      const eventDate = new Date('April 3, 2025 00:00:00').getTime();
       const currentTime = new Date().getTime();
       const timeLeft = eventDate - currentTime;
 
