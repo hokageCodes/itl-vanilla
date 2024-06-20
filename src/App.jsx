@@ -16,7 +16,7 @@ import PartnersPage from './pages/PartnersPage';
 import AwardsSection from './pages/AwardsPage';
 import MultiStepForm from './pages/NominateForm';
 import AdminLogin from './components/admin/AdminLogin';
-import AdminDashboard from './components/admin/AdminDashboard';
+import AdminAnalytics from './components/admin/AdminDashboard';
 import VolunteersSub from './components/admin/submissions/VolunteersSub';
 import RegistrationsSub from './components/admin/submissions/RegistrationSub';
 import NominationsSub from './components/admin/submissions/NominationsSub';
@@ -44,7 +44,7 @@ const App = () => {
             <ProtectedRoute>
               <AdminLayout>
                 <Routes>
-                  <Route path="/" element={<AdminDashboard />} />
+                  <Route path="/" element={<AdminAnalytics />} />
                   <Route path="submissions/volunteers" element={<VolunteersSub />} />
                   <Route path="submissions/registrations" element={<RegistrationsSub />} />
                   <Route path="submissions/nominations" element={<NominationsSub />} />
