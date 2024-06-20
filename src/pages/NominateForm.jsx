@@ -54,7 +54,7 @@ const MultiStepForm = () => {
       setLoading(true);
 
       try {
-        await addDoc(collection(firestore, 'Nominations'), {
+        await addDoc(collection(firestore, 'nominationsSubmissions'), {
           formData,
           timestamp: new Date(),
         });
@@ -73,7 +73,6 @@ const MultiStepForm = () => {
     const { value } = e.target;
     setFormData(prev => ({ ...prev, [field]: value }));
   };
-
 
   return (
     <div className="bg-bg min-h-screen py-24">
@@ -149,7 +148,7 @@ const MultiStepForm = () => {
             </button>
           )}
           {currentStep === formSteps.length - 1 && (
-            <button onClick={handleSubmit} className="bg-ctaBg hover:bg-ctaHover text-white font-bold py-2 px-4 rounded">
+            <button onClick={handleSubmit} className={`bg-ctaBg hover:bg-ctaHover text-white font-bold py-2 px-4 rounded ${loading ? 'opacity-50 cursor-not-allowed' : ''}`} disabled={loading}>
               {loading ? 'Loading...' : 'Submit'}
             </button>
           )}
@@ -176,3 +175,4 @@ const MultiStepForm = () => {
 };
 
 export default MultiStepForm;
+

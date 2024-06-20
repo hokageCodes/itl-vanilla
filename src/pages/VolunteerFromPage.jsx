@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from 'react';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { app } from '../firebaseConfig';
@@ -54,7 +52,7 @@ const Volunteer = () => {
 
       setLoading(true);
 
-      await addDoc(collection(firestore, 'volunteers'), {
+      await addDoc(collection(firestore, 'volunteersSubmissions'), {
         name,
         email,
         phoneNumber,

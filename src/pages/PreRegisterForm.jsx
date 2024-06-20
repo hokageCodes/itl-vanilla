@@ -96,7 +96,7 @@
               <div className="loader"></div>
             </div>
           ) : (
-            <div className="min-h-screen flex justify-center items-center bg-gray-100 px-4 pt-16 md:pt-0">
+            <div className="mt-8 min-h-screen flex justify-center items-center bg-gray-100 px-4 pt-16 md:pt-0">
               <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden max-w-4xl w-full">
                 <div className="p-8 space-y-4 md:w-1/2 bg-textPrimary to-blue-600 text-white">
                   <h2 className="text-3xl font-black pt-24">Why Pre-Register?</h2>
