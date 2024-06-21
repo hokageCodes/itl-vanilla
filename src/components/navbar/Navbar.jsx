@@ -22,8 +22,8 @@ const Navbar = () => {
     <nav className={`bg-white fixed top-0 z-50 w-full text-textPrimary font-bold transition duration-300 ease-in-out ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent py-3'}`}>
       <div className="max-w-8xl mx-auto flex items-center justify-between h-20">
         <div className="flex items-center">
-          <a href="/" className="flex items-center">
-            <img className='logo-img' src="/assets/logo.png" width={200} height={50} alt="Logo" />
+          <a href="/" className="flex items-center mr-8">
+            <img className='logo-img' src={isScrolled ? "/assets/1.png" : "/assets/22.png"} width={200} height={50} alt="Logo" />
           </a>
         </div>
 
