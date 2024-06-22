@@ -78,7 +78,7 @@ const FaqPage = () => {
         <div>
           {/* Banner and Search Input */}
           <div className="bg-ctaBg py-4 mt-20 text-bg text-center font-bold">
-            <h1 className="text-3xl mt-8">Frequently Asked Questions</h1>
+            <h1 className="text-3xl mt-8 text-white">Frequently Asked Questions</h1>
             <div className="mx-auto max-w-md mt-4">
                 <input
                 type="text"

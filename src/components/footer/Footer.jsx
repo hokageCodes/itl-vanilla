@@ -8,12 +8,12 @@ const Footer = () => {
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <a href="#" className="flex flex-col gap-4 items-center">
-              <img src="/assets/logo.png" className="h-16 me-3 w-32" alt="Your Logo" />
+              <img src="/assets/1.png" className="h-24 me-3 w-32" alt="Your Logo" />
               <span className="self-center text-2xl font-semibold whitespace-nowrap">The ITL Conference</span>
               <p className='text-center'>The largest gathering of Internationally Trained Lawyers (ITLs) in Canada.</p>
             </a>
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+          <div className="mt-8 grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
               <h2 className="mb-6 text-sm font-semibold text-textPrimary uppercase">Quick Links</h2>
               <ul className="text-textPrimary font-medium">

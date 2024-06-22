@@ -33,6 +33,7 @@ const Volunteer = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [location, setLocation] = useState('');
   const [otherLocation, setOtherLocation] = useState('');
+  const [committee, setCommittee] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -45,7 +46,7 @@ const Volunteer = () => {
     setSuccess(false);
 
     try {
-      if (!name || !email || !phoneNumber || !location) {
+      if (!name || !email || !phoneNumber || !location || !committee) {
         setError('Please fill out all required fields.');
         return;
       }
@@ -57,6 +58,7 @@ const Volunteer = () => {
         email,
         phoneNumber,
         location: finalLocation,
+        committee,
         timestamp: new Date(),
       });
 
@@ -65,6 +67,7 @@ const Volunteer = () => {
       setPhoneNumber('');
       setLocation('');
       setOtherLocation('');
+      setCommittee('');
 
       setSuccess(true);
     } catch (error) {
@@ -169,6 +172,26 @@ const Volunteer = () => {
                   />
                 </div>
               )}
+              <div>
+                <label htmlFor="committee" className="block text-sm font-medium text-gray-700">Choose your Committee</label>
+                <select
+                  id="committee"
+                  name="committee"
+                  required
+                  className="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm"
+                  value={committee}
+                  onChange={(e) => setCommittee(e.target.value)}
+                >
+                  <option value="">Select a Committee</option>
+                  <option value="Programs">Programs</option>
+                  <option value="Sponsorship">Sponsorship</option>
+                  <option value="Awards">Awards</option>
+                  <option value="Registration">Registration</option>
+                  <option value="Logistics">Logistics</option>
+                  <option value="Exhibition">Exhibition</option>
+                  <option value="Publicity">Publicity</option>
+                </select>
+              </div>
               <button
                 type="submit"
                 className={`w-full py-2 px-4 bg-textPrimary text-white hover:bg-ctaHover rounded focus:outline-none ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}

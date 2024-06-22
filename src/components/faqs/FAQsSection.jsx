@@ -15,7 +15,7 @@ const FaqItem = ({ question, answer }) => {
   return (
     <motion.div layout onClick={toggleOpen} className="cursor-pointer border-b-2 py-4">
       <motion.div layout initial={{ opacity: 0.8 }} whileHover={{ opacity: 1 }} className="flex items-center justify-between">
-        <h4 className="text-lg font-semibold">{question}</h4>
+        <h4 className="text-lg font-semibold text-white">{question}</h4>
         <motion.span className="text-lg">
           {isOpen ? '−' : '+'}
         </motion.span>
@@ -41,10 +41,10 @@ const FaqSection = () => {
     <div className="bg-ctaBg text-bg container mx-auto p-6">
       <div className="flex flex-col lg:flex-row gap-10">
         <div className="lg:w-1/2 space-y-6">
-          <h2 className="text-2xl font-bold pt-12">Learn More About The ITL Conference</h2>
+          <h2 className="text-2xl font-bold pt-12 text-white">Learn More About The ITL Conference</h2>
           <p className='max-w-[500px]'>Welcome to the FAQ section. Here, you will find answers to common questions about the ITL Conference, registration process, event details, and more. Explore the information to get the most out of your conference experience.</p>
         </div>
-        <div className="lg:w-1/2 space-y-4">
+        <div className="lg:w-1/2 space-y-4 text-white">
           {faqs.map((faq, index) => (
             <FaqItem key={index} {...faq} />
           ))}

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +17,10 @@ const Navbar = () => {
 
   const toggleHamburger = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
@@ -32,7 +37,21 @@ const Navbar = () => {
           <a href="/itl25-conference" className="font-black">&#39;25 Conference</a>
           <a href="/pre-register" className="font-black">Registration</a>
           <a href="/speakers" className="font-black">Speakers</a>
-          <a href="/partners" className="font-black">Partners</a>
+          <div className="relative">
+            <button
+              onClick={toggleDropdown}
+              className="font-black"
+            >
+              Team
+            </button>
+            {isDropdownOpen && (
+              <div className="w-32 absolute mt-2 bg-white border rounded shadow-lg">
+                <a href="/leadership-team" className="block px-4 py-2 text-sm font-bold hover:bg-gray-200">Leadership Team</a>
+                <a href="/planning-team" className="block px-4 py-2 text-sm font-bold hover:bg-gray-200">Planning Team</a>
+                <a href="/partners" className="block px-4 py-2 text-sm font-bold hover:bg-gray-200">Partners</a>
+              </div>
+            )}
+          </div>
           <a href="/faqs" className="font-black">FAQs</a>
           <a href="/awards" className="font-black">Awards</a>
         </div>
@@ -63,7 +82,18 @@ const Navbar = () => {
         <a href="/itl25-conference" className="block py-2 px-4 text-sm font-bold">&#39;25 Conference</a>
         <a href="/pre-register" className="block py-2 px-4 text-sm font-bold">Registration</a>
         <a href="/speakers" className="block py-2 px-4 text-sm font-bold">Speakers</a>
-        <a href="/partners" className="block py-2 px-4 text-sm font-bold">Partners</a>
+        <div className="block py-2 px-4 text-sm font-bold">
+          <button onClick={toggleDropdown} className="w-full text-left">
+            Team
+          </button>
+          {isDropdownOpen && (
+            <div className="pl-4 mt-2">
+              <a href="/leadership-team" className="block py-2 text-sm font-bold">Leadership Team</a>
+              <a href="/planning-team" className="block py-2 text-sm font-bold">Planning Team</a>
+              <a href="/partners" className="block py-2 text-sm font-bold">Partners</a>
+            </div>
+          )}
+        </div>
         <a href="/faqs" className="block py-2 px-4 text-sm font-bold">FAQs</a>
         <a href="/awards" className="block py-2 px-4 text-sm font-bold">Awards</a>
         <a href="/volunteer" className="block mx-auto my-4 py-2 px-4 w-auto bg-ctaBg text-white hover:bg-blue-700 rounded transition duration-300 text-center">Volunteer</a>
