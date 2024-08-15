@@ -120,7 +120,7 @@ const Hero = () => {
 
   return (
     <HeroContainer>
-      <VideoBackground src="../../assets/hero-video.mp4" />
+      <VideoBackground src="/assets/hero-video.mp4" />
       <ContentContainer>
         <TextContainer>
           <h1 className='hero-deco text-5xl font-black'>THE ITL CONFERENCE &#39;25</h1>
